@@ -14,8 +14,9 @@ export default function Index() {
     'https://github.com/sahilpabale',
     'https://www.instagram.com/sahilpabale/',
     'https://twitter.com/sahilpabale',
+    'mailto:hey@sahil.lol',
   ]
-  var iconList = ['linkedin', 'github', 'instagram', 'twitter']
+  var iconList = ['linkedin', 'github', 'instagram', 'twitter', 'gmail']
 
   function iconLinkGenerator(name, theme, link) {
     return (

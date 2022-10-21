@@ -142,7 +142,7 @@ export default function Index() {
                   <Image
                     width={360}
                     height={200}
-                    src="https://images-ext-1.discordapp.net/external/cpzQ_o0K7HzDuysKiDNYMWKKSe8dejKhC0Lm5rg7xhQ/https/airbound.co/banner_image.png"
+                    src="https://res.cloudinary.com/sahilpabale/image/upload/v1666352031/airbound_img_ma9bqg.webp"
                     layout="fixed"
                     objectFit="cover"
                   />
@@ -186,7 +186,7 @@ export default function Index() {
               </div>
             </div>
             <div className="mt-4 md:mt-0 md:ml-12 cursor-pointer flex items-center">
-              <Link title="Airbound.co" href="https://airbound.co">
+              <Link title="Investmint" href="https://investmint.club">
                 <div style={{ borderRadius: '8px', overflow: 'hidden' }}>
                   <Image
                     width={360}
