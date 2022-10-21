@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useTheme } from 'next-themes'
 import Layout from '@/components/layout'
-export default function Index({ allPosts, allWork }) {
+export default function Index() {
   const [mounted, setMounted] = useState(false)
   const { theme } = useTheme()
   const rightArrowLink = `https://s.svgbox.net/hero-solid.svg?ic=arrow-right&fill=${
@@ -118,15 +118,21 @@ export default function Index({ allPosts, allWork }) {
                 <p className="text-md">Skills:</p>
                 <button
                   type="button"
-                  className="rounded-full text-white bg-primary px-3 dark:bg-orange-200 dark:text-black"
+                  className="rounded-full text-white bg-amber-600 px-3 dark:bg-amber-500 dark:text-black"
                 >
                   Rust
                 </button>
                 <button
                   type="button"
-                  className="rounded-full text-white bg-blue-500 px-3 dark:bg-blue-300 dark:text-black"
+                  className="rounded-full text-white bg-indigo-500 px-3 dark:bg-indigo-300 dark:text-black"
                 >
-                  PX4
+                  Mavlink
+                </button>
+                <button
+                  type="button"
+                  className="rounded-full text-white bg-sky-500 px-3 dark:bg-sky-200 dark:text-black"
+                >
+                  PostgreSQL
                 </button>
               </div>
             </div>
@@ -148,27 +154,34 @@ export default function Index({ allPosts, allWork }) {
           {/* investmint */}
           <div className="flex flex-col md:flex-row items-center p-4 border-gray-400 dark:border-gray-700 border-2 rounded-lg mt-8">
             <div>
-              <p className="font-semibold text-3xl">Airbound</p>
+              <p className="font-semibold text-3xl">Investmint</p>
               <p className="text-gray-500 text-lg pb-2 dark:text-gray-400">
-                Backend Engineer (Aug 2022 - Present)
+                Software Engineer (Jun 2022 - Aug 2022)
               </p>
               <p>
-                Solving healthcare problems in rural areas with the help of
-                Automated Drones at Airbound.{' '}
+                1. Multi Broker Integration Library for the Core API <br /> 2.
+                Integration of Trading brokers like Zerodha, Dhan and so on to
+                ensure smooth trade execution on Investmint App
               </p>
               <div className="flex flex-row space-x-2 pt-3">
                 <p className="text-md">Skills:</p>
                 <button
                   type="button"
-                  className="rounded-full text-white bg-red-500 px-3 dark:bg-red-400"
+                  className="rounded-full text-white bg-green-500 px-3 dark:bg-green-300 dark:text-black"
                 >
-                  Rust
+                  NodeJS
                 </button>
                 <button
                   type="button"
-                  className="rounded-full text-white bg-blue-500 px-3 dark:bg-blue-500"
+                  className="rounded-full text-white bg-sky-500 px-3 dark:bg-sky-200 dark:text-black"
                 >
-                  PX4
+                  PostgreSQL
+                </button>
+                <button
+                  type="button"
+                  className="rounded-full text-white bg-blue-500 px-3 dark:bg-blue-300 dark:text-black"
+                >
+                  Typescript
                 </button>
               </div>
             </div>
@@ -178,7 +191,7 @@ export default function Index({ allPosts, allWork }) {
                   <Image
                     width={360}
                     height={200}
-                    src="https://pbs.twimg.com/profile_banners/1476941166213877760/1650450704/1500x500"
+                    src="https://res.cloudinary.com/sahilpabale/image/upload/v1666349771/investmint_xfq6kz.webp"
                     layout="fixed"
                     className="object-none bg-white"
                   />
@@ -190,9 +203,9 @@ export default function Index({ allPosts, allWork }) {
           {/* career leap */}
           <div className="flex flex-col md:flex-row items-center p-4 border-gray-400 dark:border-gray-700 border-2 rounded-lg mt-8">
             <div>
-              <p className="font-semibold text-3xl">Airbound</p>
+              <p className="font-semibold text-3xl">Career Leap</p>
               <p className="text-gray-500 text-lg pb-2 dark:text-gray-400">
-                Backend Engineer (Aug 2022 - Present)
+                Backend Engineer (Sep 2021 - Dec 2021)
               </p>
               <p>
                 Worked on: <br />
@@ -204,15 +217,27 @@ export default function Index({ allPosts, allWork }) {
                 <p className="text-md">Skills:</p>
                 <button
                   type="button"
-                  className="rounded-full text-white bg-red-500 px-3 dark:bg-red-400"
+                  className="rounded-full text-white bg-green-500 px-3 dark:bg-green-300 dark:text-black"
                 >
-                  Rust
+                  NodeJS
                 </button>
                 <button
                   type="button"
-                  className="rounded-full text-white bg-blue-500 px-3 dark:bg-blue-500"
+                  className="rounded-full text-white bg-emerald-500 px-3 dark:bg-emerald-200 dark:text-black"
                 >
-                  PX4
+                  MongoDB
+                </button>
+                <button
+                  type="button"
+                  className="rounded-full text-white bg-yellow-500 px-3 dark:bg-yellow-300 dark:text-black"
+                >
+                  Javascript
+                </button>
+                <button
+                  type="button"
+                  className="rounded-full text-white bg-teal-500 px-3 dark:bg-teal-300 dark:text-black"
+                >
+                  Firebase
                 </button>
               </div>
             </div>

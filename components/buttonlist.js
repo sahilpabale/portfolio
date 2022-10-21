@@ -5,7 +5,7 @@ const navButtons = [
   },
   {
     label: 'Writings',
-    path: '/writings',
+    path: 'https://blog.sahil.lol',
   },
 ]
 
