@@ -1,0 +1,13 @@
+---
+const links = [
+    { href: "/resume.pdf", label: "resume" },
+    { href: "/blog", label: "blog" },
+    { href: "/rss.xml", label: "rss" }
+]
+---
+
+<div class="flex gap-x-4 text-neutral-500 ">
+    {links.map(link => (
+        <a href={link.href} target="_self" class="hover:(underline underline-offset-4 transition-transform)">{link.label}</a>
+    ))}
+</div>

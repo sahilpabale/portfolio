@@ -1,0 +1,51 @@
+---
+import { getCollection } from "astro:content"
+import { sortPostsByDate } from "../lib/date"
+import Link from "../components/Link.vue"
+import Base from "../layouts/Base.astro"
+import Project from "../components/Project.astro"
+import PostRow from "../components/PostRow.astro"
+import { getProjects } from "../lib/projects"
+
+// const projects = await getProjects(6)
+const projects = await getProjects()
+const posts = sortPostsByDate(
+  await getCollection("blog", ({ data }) => data.isDraft !== true),
+).slice(0, 4)
+
+const title = "sahil • home";
+---
+
+<Base
+  {title}
+  description="portfolio website of sahil pabale."
+>
+  <h1 slot="header-content" class="text-neutral-500">
+    sahil pabale
+  </h1>
+
+  <main class="prose">
+    <p>
+
+      Hi there, I'm <strong>Sahil</strong>. I'm a backend engineer based in India with over 3 years of experience in building <strong>scalable and robust systems</strong>. I also excel in crafting dev-tools such as <strong>SDKs and CLIs</strong>. I have a passion for participating in hackathons and have achieved <strong>multiple global wins</strong>. Currently, I am working on implementing some significant whitepapers in <strong>distributed systems</strong> as side projects.
+    </p>
+
+    <div class="mt-12"></div>
+    <h2>Projects</h2>
+
+    <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+      {projects.map(project => <Project {project} />)}
+    </div>
+
+    <div class="mt-12"></div>
+    <h2>Blog</h2>
+
+    <div class="flex flex-col gap-4">
+      {posts.map(post => <PostRow {post} />)}
+
+      <span>
+        <Link href="/blog">All posts →</Link>
+      </span>
+    </div>
+  </main>
+</Base>
