@@ -1,0 +1,25 @@
+---
+title: "Durable nonces, and why bursts break things"
+description: "Dummy post — replace with real writing."
+date: 2026-07-10
+---
+
+> **This is a dummy post** so the design has something to render. Delete it
+> when the real writing starts.
+
+Solana transactions expire fast. A recent blockhash is only valid for about
+a minute, which is fine for a wallet click and terrible for anything that
+queues work.
+
+Durable nonces sidestep this: a nonce account holds a value that stands in
+for the blockhash, so a signed transaction stays valid until the nonce is
+advanced. That one property turns "sign and pray" into "sign now, execute
+whenever."
+
+```rust
+let nonce = fetch_nonce_account(&client, &nonce_pubkey)?;
+let msg = Message::new_with_nonce(instructions, Some(&payer), &nonce_pubkey, &authority);
+```
+
+The interesting failure modes show up under bursts — which is a story for a
+real post.

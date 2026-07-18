@@ -1,51 +1,222 @@
 ---
-import { getCollection } from "astro:content"
-import { sortPostsByDate } from "../lib/date"
-import Link from "../components/Link.vue"
-import Base from "../layouts/Base.astro"
-import Project from "../components/Project.astro"
-import PostRow from "../components/PostRow.astro"
-import { getProjects } from "../lib/projects"
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
 
-// const projects = await getProjects(6)
-const projects = await getProjects()
-const posts = sortPostsByDate(
-  await getCollection("blog", ({ data }) => data.isDraft !== true),
-).slice(0, 4)
+const posts = (await getCollection("writing", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 5);
 
-const title = "sahil • home";
+const dateFormat = new Intl.DateTimeFormat("en", {
+  month: "short",
+  year: "numeric",
+});
+
+const jobs = [
+  {
+    name: "Cubik",
+    role: "backend engineer",
+    year: "2023–24",
+    link: "https://cubik.so",
+    line: "backend and SDK work for a Solana crowdfunding protocol — faster client APIs, cleaner transaction infra.",
+  },
+  {
+    name: "Airbound",
+    role: "backend engineer",
+    year: "2022",
+    link: "https://airbound.co",
+    line: "infrastructure in Rust for managing drone fleets remotely.",
+  },
+  {
+    name: "Investmint",
+    role: "backend engineer",
+    year: "2022",
+    link: "https://investmint.club",
+    line: "an internal SDK for talking to stock brokers, and a 2x faster order-placing API.",
+  },
+];
+
+// TODO(sahil): dummy rows — replace with real recent projects
+const projects = [
+  {
+    name: "nonci",
+    year: "dummy",
+    link: "https://nonci.xyz",
+    line: "queue Solana transactions and execute them asynchronously with durable nonces.",
+  },
+  {
+    name: "p2p-db",
+    year: "dummy",
+    link: "https://github.com/sahilpabale/p2p-db",
+    line: "a peer-to-peer key-value database written in Rust.",
+  },
+];
 ---
 
-<Base
-  {title}
-  description="portfolio website of sahil pabale."
->
-  <h1 slot="header-content" class="text-neutral-500">
-    sahil pabale
-  </h1>
+<Base title="sahil pabale" description="backend engineer — solana, rust, and the plumbing of markets.">
+  <main>
+    <header>
+      <h1>Sahil Pabale</h1>
+      <p class="meta">backend engineer</p>
+    </header>
 
-  <main class="prose">
-    <p>
+    <section class="intro">
+      <p>
+        <!-- TODO(sahil): dummy intro — replace with what you actually do now -->
+        I build backend systems — the kind that sit under products and quietly
+        do the heavy lifting. For the last few years that has meant APIs,
+        SDKs, and transaction infrastructure, mostly in Rust and TypeScript.
+      </p>
+      <p>
+        These days I spend most of my time around Solana and Rust, drawn to
+        the plumbing of markets — DeFi, high-frequency trading systems, and
+        enough economics to understand why any of it holds together.
+      </p>
+    </section>
 
-      Hi there, I'm <strong>Sahil</strong>. I'm a backend engineer based in India with over 3 years of experience in building <strong>scalable and robust systems</strong>. I also excel in crafting dev-tools such as <strong>SDKs and CLIs</strong>. I have a passion for participating in hackathons and have achieved <strong>multiple global wins</strong>. Currently, I am working on implementing some significant whitepapers in <strong>distributed systems</strong> as side projects.
-    </p>
+    <section>
+      <p class="section-label">Work</p>
+      <ul class="works">
+        {
+          jobs.map((job) => (
+            <li>
+              <div class="work-row">
+                <span class="work-name">
+                  <a href={job.link}>{job.name}</a>
+                  <span class="work-role">· {job.role}</span>
+                </span>
+                <span class="work-year">{job.year}</span>
+              </div>
+              <p class="work-line">{job.line}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
 
-    <div class="mt-12"></div>
-    <h2>Projects</h2>
+    <section>
+      <p class="section-label">Projects</p>
+      <ul class="works">
+        {
+          projects.map((project) => (
+            <li>
+              <div class="work-row">
+                <span class="work-name">
+                  <a href={project.link}>{project.name}</a>
+                </span>
+                <span class="work-year">{project.year}</span>
+              </div>
+              <p class="work-line">{project.line}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
 
-    <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
-      {projects.map(project => <Project {project} />)}
-    </div>
-
-    <div class="mt-12"></div>
-    <h2>Blog</h2>
-
-    <div class="flex flex-col gap-4">
-      {posts.map(post => <PostRow {post} />)}
-
-      <span>
-        <Link href="/blog">All posts →</Link>
-      </span>
-    </div>
+    <section>
+      <p class="section-label">Writing</p>
+      <ul class="posts">
+        {
+          posts.map((post) => (
+            <li class="post-row">
+              <a href={`/writing/${post.id}/`}>{post.data.title}</a>
+              <span class="post-date">{dateFormat.format(post.data.date)}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="all-posts">
+        <a href="/writing/">all writing</a>
+      </p>
+    </section>
   </main>
 </Base>
+
+<style>
+  section,
+  .intro {
+    margin-top: 3rem;
+  }
+
+  .intro p + p {
+    margin-top: 1.1em;
+  }
+
+  header .meta {
+    margin-top: 0.25rem;
+  }
+
+  .works,
+  .posts {
+    list-style: none;
+  }
+
+  .works li + li {
+    margin-top: 1.5rem;
+  }
+
+  .work-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  .work-name {
+    font-family: var(--sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .work-name a {
+    text-decoration: none;
+  }
+
+  .work-name a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--muted);
+    text-underline-offset: 3px;
+  }
+
+  .work-role {
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .work-year,
+  .post-date {
+    font-style: italic;
+    color: var(--muted);
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  .work-line {
+    margin-top: 0.15rem;
+  }
+
+  .post-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  .posts li + li {
+    margin-top: 0.6rem;
+  }
+
+  .all-posts {
+    margin-top: 1.25rem;
+  }
+
+  .all-posts a {
+    font-family: var(--sans);
+    font-size: 0.8125rem;
+    text-decoration: none;
+    color: var(--muted);
+  }
+
+  .all-posts a:hover {
+    color: var(--text);
+  }
+</style>
