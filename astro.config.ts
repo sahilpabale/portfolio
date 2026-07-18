@@ -1,31 +1,15 @@
 import { defineConfig } from "astro/config";
-import vue from "@astrojs/vue";
 import mdx from "@astrojs/mdx";
-import solidJs from "@astrojs/solid-js";
+import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
-import vercel from "@astrojs/vercel/serverless";
-import unocss from "unocss/astro";
-// @ts-ignore
-import vesper from "./src/lib/vesper.json";
+import vercel from "@astrojs/vercel";
+import keystatic from "@keystatic/astro";
 
 export default defineConfig({
   site: "https://www.sahil.bio",
   adapter: vercel(),
-  output: "hybrid",
-  integrations: [
-    mdx(),
-    sitemap(),
-    solidJs(),
-    unocss({ injectReset: true }),
-    vue(),
-  ],
-  prefetch: {
-    prefetchAll: true,
-    defaultStrategy: "viewport"
+  integrations: [react(), mdx(), keystatic(), sitemap()],
+  markdown: {
+    shikiConfig: { theme: "vitesse-light", wrap: true },
   },
-  server: {
-    port: 6969
-  },
-  // @ts-expect-error
-  markdown: { shikiConfig: { theme: vesper, wrap: true } },
 });

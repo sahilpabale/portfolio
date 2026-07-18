@@ -1,0 +1,22 @@
+---
+title: "Notes from reading the Raft paper"
+description: "Dummy post — replace with real writing."
+date: 2026-06-21
+---
+
+> **This is a dummy post** so the design has something to render. Delete it
+> when the real writing starts.
+
+Raft's core trick is that it makes consensus *legible*. Where Paxos is a
+proof that happens to be an algorithm, Raft is an algorithm designed to be
+taught: leader election, log replication, and safety, each of which can be
+held in your head separately.
+
+A few things that stuck:
+
+- The election timeout randomization is doing a lot of heavy lifting.
+- Log matching is an invariant, not a mechanism — the mechanism is just
+  "reject if the previous entry doesn't match."
+- Snapshotting is where the clean story meets the messy world.
+
+More once I've actually implemented it.

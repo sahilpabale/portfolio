@@ -1,0 +1,68 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("writing", ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const dateFormat = new Intl.DateTimeFormat("en", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+---
+
+<Base
+  title={`${post.data.title} · sahil pabale`}
+  description={post.data.description ?? post.data.title}
+>
+  <main>
+    <p class="crumb"><a href="/writing/">← writing</a></p>
+
+    <header>
+      <h1>{post.data.title}</h1>
+      <p class="meta">{dateFormat.format(post.data.date)}</p>
+    </header>
+
+    <article class="prose">
+      <Content />
+    </article>
+  </main>
+</Base>
+
+<style>
+  .crumb {
+    margin-bottom: 2.5rem;
+  }
+
+  .crumb a {
+    font-family: var(--sans);
+    font-size: 0.8125rem;
+    text-decoration: none;
+    color: var(--muted);
+  }
+
+  .crumb a:hover {
+    color: var(--text);
+  }
+
+  header h1 {
+    font-size: 1.375rem;
+  }
+
+  header .meta {
+    margin-top: 0.35rem;
+  }
+
+  article {
+    margin-top: 2.5rem;
+  }
+</style>

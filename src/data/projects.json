@@ -1,0 +1,16 @@
+{
+  "projects": [
+    {
+      "name": "nonci",
+      "year": "dummy",
+      "link": "https://nonci.xyz",
+      "line": "queue Solana transactions and execute them asynchronously with durable nonces."
+    },
+    {
+      "name": "p2p-db",
+      "year": "dummy",
+      "link": "https://github.com/sahilpabale/p2p-db",
+      "line": "a peer-to-peer key-value database written in Rust."
+    }
+  ]
+}
