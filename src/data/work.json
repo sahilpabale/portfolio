@@ -1,0 +1,25 @@
+{
+  "jobs": [
+    {
+      "name": "Cubik",
+      "role": "backend engineer",
+      "year": "2023–24",
+      "link": "https://cubik.so",
+      "line": "backend and SDK work for a Solana crowdfunding protocol — faster client APIs, cleaner transaction infra."
+    },
+    {
+      "name": "Airbound",
+      "role": "backend engineer",
+      "year": "2022",
+      "link": "https://airbound.co",
+      "line": "infrastructure in Rust for managing drone fleets remotely."
+    },
+    {
+      "name": "Investmint",
+      "role": "backend engineer",
+      "year": "2022",
+      "link": "https://investmint.club",
+      "line": "an internal SDK for talking to stock brokers, and a 2x faster order-placing API."
+    }
+  ]
+}

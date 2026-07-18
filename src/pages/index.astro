@@ -1,6 +1,9 @@
 ---
 import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
+import intro from "../data/intro.json";
+import { jobs } from "../data/work.json";
+import { projects } from "../data/projects.json";
 
 const posts = (await getCollection("writing", ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
@@ -10,67 +13,17 @@ const dateFormat = new Intl.DateTimeFormat("en", {
   month: "short",
   year: "numeric",
 });
-
-const jobs = [
-  {
-    name: "Cubik",
-    role: "backend engineer",
-    year: "2023–24",
-    link: "https://cubik.so",
-    line: "backend and SDK work for a Solana crowdfunding protocol — faster client APIs, cleaner transaction infra.",
-  },
-  {
-    name: "Airbound",
-    role: "backend engineer",
-    year: "2022",
-    link: "https://airbound.co",
-    line: "infrastructure in Rust for managing drone fleets remotely.",
-  },
-  {
-    name: "Investmint",
-    role: "backend engineer",
-    year: "2022",
-    link: "https://investmint.club",
-    line: "an internal SDK for talking to stock brokers, and a 2x faster order-placing API.",
-  },
-];
-
-// TODO(sahil): dummy rows — replace with real recent projects
-const projects = [
-  {
-    name: "nonci",
-    year: "dummy",
-    link: "https://nonci.xyz",
-    line: "queue Solana transactions and execute them asynchronously with durable nonces.",
-  },
-  {
-    name: "p2p-db",
-    year: "dummy",
-    link: "https://github.com/sahilpabale/p2p-db",
-    line: "a peer-to-peer key-value database written in Rust.",
-  },
-];
 ---
 
 <Base title="sahil pabale" description="backend engineer — solana, rust, and the plumbing of markets.">
   <main>
     <header>
       <h1>Sahil Pabale</h1>
-      <p class="meta">backend engineer</p>
+      <p class="meta">{intro.tagline}</p>
     </header>
 
     <section class="intro">
-      <p>
-        <!-- TODO(sahil): dummy intro — replace with what you actually do now -->
-        I build backend systems — the kind that sit under products and quietly
-        do the heavy lifting. For the last few years that has meant APIs,
-        SDKs, and transaction infrastructure, mostly in Rust and TypeScript.
-      </p>
-      <p>
-        These days I spend most of my time around Solana and Rust, drawn to
-        the plumbing of markets — DeFi, high-frequency trading systems, and
-        enough economics to understand why any of it holds together.
-      </p>
+      {intro.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
     </section>
 
     <section>
@@ -134,7 +87,7 @@ const projects = [
 <style>
   section,
   .intro {
-    margin-top: 3rem;
+    margin-top: 2.25rem;
   }
 
   .intro p + p {
@@ -151,7 +104,7 @@ const projects = [
   }
 
   .works li + li {
-    margin-top: 1.5rem;
+    margin-top: 1.1rem;
   }
 
   .work-row {
