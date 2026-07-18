@@ -23,12 +23,12 @@ importers:
       '@astrojs/vercel':
         specifier: ^8.2.11
         version: 8.2.11(astro@5.18.2(@types/node@24.13.3)(@vercel/functions@3.7.5)(idb-keyval@6.3.0)(lightningcss@1.32.0)(rollup@4.62.2)(typescript@5.9.3))(react@19.2.7)(rollup@4.62.2)
-      '@fontsource-variable/eb-garamond':
-        specifier: ^5.2.5
-        version: 5.2.7
-      '@fontsource-variable/inter':
-        specifier: ^5.2.5
+      '@fontsource-variable/instrument-sans':
+        specifier: ^5.2.8
         version: 5.2.8
+      '@fontsource-variable/newsreader':
+        specifier: ^5.2.10
+        version: 5.2.10
       '@keystatic/astro':
         specifier: ^5.2.0
         version: 5.2.0(@keystatic/core@0.5.51(@react-spectrum/provider@3.11.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(astro@5.18.2(@types/node@24.13.3)(@vercel/functions@3.7.5)(idb-keyval@6.3.0)(lightningcss@1.32.0)(rollup@4.62.2)(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -582,11 +582,11 @@ packages:
   '@floating-ui/utils@0.2.12':
     resolution: {integrity: sha512-HpCo8tmWzLVad5s2d19EhAz5zqrrQ6s69qd6moPMQvkOuSwDT1YgRfWSVuc4ennqrgv3OHppiOGMQ7oC13yIww==}
 
-  '@fontsource-variable/eb-garamond@5.2.7':
-    resolution: {integrity: sha512-TbR+Pun4k5g85lgdxRNSbWka5vJgi9pzdFzFswgf7/7NRhKssvoumft1+ZGz3n91YYet96JcnjWrgPGGj6JTzg==}
+  '@fontsource-variable/instrument-sans@5.2.8':
+    resolution: {integrity: sha512-mTCaukbdIjjoipj2E3Q5XoZM3ZxJWdzyHevf/LG/0PHlfF9Q85pxOM7B7A9MerFyxmRzz5kVlumgIvgDSG4CPg==}
 
-  '@fontsource-variable/inter@5.2.8':
-    resolution: {integrity: sha512-kOfP2D+ykbcX/P3IFnokOhVRNoTozo5/JxhAIVYLpea/UBmCQ/YWPBfWIDuBImXX/15KH+eKh4xpEUyS2sQQGQ==}
+  '@fontsource-variable/newsreader@5.2.10':
+    resolution: {integrity: sha512-MdI2iRwrqWpMOU/2aV2BgfZ4dJNlj/XlYaY8Zb7t87mWqHskYW0XiUANkt1cyOCiEfW2VQ0bQ5vZgGPp6B2B4w==}
 
   '@formatjs/ecma402-abstract@2.3.6':
     resolution: {integrity: sha512-HJnTFeRM2kVFVr5gr5kH1XP6K0JcJtE7Lzvtr3FS/so5f1kpsqqqxy5JF+FRaO6H2qmcMfAUIox7AJteieRtVw==}
@@ -4229,9 +4229,9 @@ snapshots:
 
   '@floating-ui/utils@0.2.12': {}
 
-  '@fontsource-variable/eb-garamond@5.2.7': {}
+  '@fontsource-variable/instrument-sans@5.2.8': {}
 
-  '@fontsource-variable/inter@5.2.8': {}
+  '@fontsource-variable/newsreader@5.2.10': {}
 
   '@formatjs/ecma402-abstract@2.3.6':
     dependencies:

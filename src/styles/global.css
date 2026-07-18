@@ -3,8 +3,8 @@
   --text: #1c1b1a;
   --muted: #77726b;
   --faint: #e8e5e0;
-  --serif: "EB Garamond Variable", "EB Garamond", Georgia, serif;
-  --sans: "Inter Variable", "Inter", system-ui, sans-serif;
+  --serif: "Newsreader Variable", "Newsreader", Georgia, serif;
+  --sans: "Instrument Sans Variable", "Instrument Sans", system-ui, sans-serif;
 }
 
 * {
@@ -17,16 +17,20 @@ html {
   background: var(--bg);
   color: var(--text);
   font-family: var(--serif);
-  font-size: 19px;
+  font-size: 18.5px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 body {
-  max-width: 40rem;
+  max-width: 36.5rem;
   margin: 0 auto;
   padding: 3.5rem 1.5rem 2.5rem;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 640px) {
@@ -44,8 +48,8 @@ h3 {
 }
 
 h1 {
-  font-size: 1.25rem;
-  letter-spacing: -0.01em;
+  font-size: 1.625rem;
+  letter-spacing: -0.015em;
 }
 
 a {
